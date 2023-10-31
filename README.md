@@ -15,3 +15,28 @@ Our pipeline also involves human interference to provision and configure the pro
 # Use Case
 
 # Pipeline Design
+The following diagram is a generalized overview of the pipeline.
+![Pipeline Design Overview](./pipeline%20designs/pipeline_design_overview.png)
+
+1. Whenever new changes is committed on development branch, the build process will be automatically initiated
+2. Upon the successful compilation and building of the software, a testing routine will be activated.
+3. Following the successful test outcomes, the workflow will start the creation of a Docker Image, assigned with a specific tag designed such that only images from the main branch can be deployed on PROD, and the other images can be used in the INTEG environment to test the application functionalities. A comprehensive explanation of the image creation process is depicted in the diagram below.
+4. During the deployment phase, administrators can select the desired deployment environment and initiate image deployment by modifying the image tag within the Ansible. This is where slight Human Intervention is required. The workflow will then retrieve the image from the registry and execute the deployment.
+6. NOTE: We will also need Human intervention for provisioning resources like VCL
+
+Detailed Flow of how different images are created for different environments
+![Pipeline Detailed Design](./pipeline%20designs/pipeline_designed_detailed.png)
+
+The pipeline design outlined above is well-suited for rollback capabilities due to the presence of an image repository housing all previously deployed images. In the event of a malfunction in the PROD environment, a seamless rollback to a prior image becomes readily achievable.
+
+The technologies we will employ include:
+
+1. Git for collaborative version control.
+2. GitHub Actions to initiate build and testing processes.
+3. Utilizing either GitHub Image Registry or Docker Hub to host our images.
+4. Docker to containerize our applications.
+5. Ansible for deploying and configuring servers in various environments.
+
+
+
+
