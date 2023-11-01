@@ -40,4 +40,7 @@ The technologies we will employ include:
 
 
 
-
+# Authors
+Daksh Mehta (dmehta4)
+Ashvin Shivram Gaonkar (agaonka2)
+Rohan Shiveshwarkar (rsshives)
