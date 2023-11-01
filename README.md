@@ -4,13 +4,12 @@
 Traditionally, the team responsible for development and the team responsible for operations have been separate. The development team is responsible for implementing new features and the operations team has the responsibility to roll them out. However, this rolling out of the features is done manually which is error prone, slow and inefficient which leads to slower delivery of software to the end customer. It is also not scalable because as the application grows it becomes increasingly difficult to manage it. The lack of automation also increases downtime since human intervention is required when something breaks. The silo mentality further exacerbates these issues, making it challenging to roll out high-quality software faster.
 
 ## Why does this problem matter?
-Developers create new features in response to customers' needs. If the roll out process of new software is slow the customers' needs may change by the time the software reaches them. In addition, if something goes wrong during the release of the software or it behaves in an unexpected manner the operations team might blame the dev team and vice versa. To tackle these issues, a CI/CD pipeline has proven to be beneficial.
+Developers create new features in response to customers' needs. If the roll out process of new software is slow the customers' needs may change by the time the software reaches them. In addition, if something goes wrong during the release of the software or it behaves in an unexpected manner the operations team might blame the dev team and vice versa. To tackle these issues, we propose a CI/CD pipeline below.
 
 ## What does our pipeline do?
-Our pipeline offers a way to automate the deployment process using Github actions, Ansible, and Docker. This automated pipeline intends to lower the turnaround time taken to get the software to the end user. Whenever a feature is pushed to the release branch of our repository, automated tests will run and if they pass the code will go further down the pipeline all the way to production.
+Our pipeline provides an automated way to deploy software using GitHub Actions, Ansible, and Docker. The main purpose of this automated pipeline is to reduce the time it takes to deliver software to the end user. Whenever a feature is pushed to the release branch of our repository, automated tests are run. If the tests pass, the code will move further down the pipeline until it reaches production.
 
-Our pipeline responds to triggers such as code commits and PRs, and in response to these events certain scripts run with the help of Github Actions.
-Our pipeline also involves human interference to provision and configure the production environment where our staged code will run. This environment will be configured using Ansible and the code will get deployed on the production machine.
+Our pipeline is triggered by events such as code commits and PRs. When these events occur, certain scripts run with the help of GitHub Actions. We also utilize GitHub Actions to create container images. However, we do require human intervention to provision and configure the production environment where our staged code will be deployed. This environment will be configured using Ansible, while the code will be deployed on the production machine using the container image we created earlier.
 
 # Use Case
 
@@ -40,7 +39,4 @@ The technologies we will employ include:
 
 
 
-# Authors
-Daksh Mehta (dmehta4)
-Ashvin Shivram Gaonkar (agaonka2)
-Rohan Shiveshwarkar (rsshives)
+
