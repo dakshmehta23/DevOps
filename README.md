@@ -11,6 +11,8 @@ Our pipeline provides an automated way to deploy software using GitHub Actions, 
 
 Our pipeline is triggered by events such as code commits and PRs. When these events occur, certain scripts run with the help of GitHub Actions. We also utilize GitHub Actions to create container images. However, we do require human intervention to provision and configure the production environment where our staged code will be deployed. This environment will be configured using Ansible, while the code will be deployed on the production machine using the container image we created earlier.
 
+#### Tagline - Developers and Ops, Hand in Hand, Thanks to Our Pipeline's Grand Plan!
+
 # Use Case
 
 # Pipeline Design
