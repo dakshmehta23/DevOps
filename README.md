@@ -22,7 +22,6 @@ Use Case: Testing of Pulled Docker Image in Staging (INTEG) Environment
 	Self hosted GitHub Actions system provisioned
 	Development branch exists
 
-
 2. Main Flow:
 	Developer will initiate the pipeline by initiating a PR from development branch to release branch
 	[S1]
