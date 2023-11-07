@@ -26,5 +26,3 @@ npm install mocha chai supertest --save-dev
 ```
 npm test
 ```
-
-
