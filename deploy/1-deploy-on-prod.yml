@@ -1,0 +1,29 @@
+---
+- name: Pull Docker image and run container
+  hosts: integ
+  become: yes
+  vars:
+    expected_image_prefix: "agaonka2/prod"
+    docker_image_name: "agaonka2/integ-20231108192728"
+
+  tasks:
+    - name: Check if the image being deployed is for PROD
+      fail:
+        msg: "The specified image is not for PROD"
+      when: not docker_image_name.startswith(expected_image_prefix)
+
+    - name: Pull Docker image
+      docker_image:
+        name: "{{ docker_image_name }}"
+        source: pull
+        state: present
+      register: docker_image_result
+
+    - name: Run Docker container
+      docker_container:
+        name: my_container
+        image: "{{ docker_image_name }}"
+        state: started
+        ports:
+          - "3000:3000"
+      register: docker_container_result
