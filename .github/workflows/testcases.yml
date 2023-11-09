@@ -1,3 +1,4 @@
+# This workflow runs the unit test cases in the /coffee-project/test directory
 defaults:
   run:
     working-directory: coffee-project
