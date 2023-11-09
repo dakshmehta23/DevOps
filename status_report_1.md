@@ -13,7 +13,7 @@
 
 ## Next Steps
 
-1. Write test cases to check for cross site scripting vulnerabilities - Daksh  
+1. Write test cases to check for cross site scripting vulnerabilities and an ansible playbook for security patches for environments - Daksh  
 
 ## Retrospective for the sprint
 1. What Worked<br>
