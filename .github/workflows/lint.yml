@@ -20,6 +20,9 @@ jobs:
 
       - name: Code Checkout
         uses: actions/checkout@v2
+        
+      - name: Switch Directory
+        run: cd coffee-project
 
       - name: Install Dependencies
         run: npm ci
