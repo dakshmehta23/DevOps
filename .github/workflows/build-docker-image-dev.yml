@@ -1,0 +1,46 @@
+name: Build and Publish Docker Image
+
+# on:
+#   push:
+#     branches:
+#       - dev
+
+jobs:
+  build_and_publish:
+    runs-on: self-hosted
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install express axios
+
+    - name: Get the current date and time
+      id: datetime
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+
+    - name: Build Docker image with a unique tag
+      run: |
+        DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
+        image_tag="${DOCKER_USER}/integ-$(echo ${{steps.datetime.outputs.date}})"
+        sudo docker build -t "$image_tag" -f ./coffee-project/Dockerfile .
+
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        sudo chmod 666 /var/run/docker.sock
+        sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+    - name: Push Docker image to Docker Hub
+      run: |
+        DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
+        image_tag="${DOCKER_USER}/integ-$(echo ${{steps.datetime.outputs.date}})"
+        docker push "$image_tag"
