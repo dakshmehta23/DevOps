@@ -13,6 +13,8 @@
 
 ## Next Steps
 
+1. Write test cases to check for cross site scripting vulnerabilities - Daksh  
+
 ## Retrospective for the sprint
 1. What Worked<br>
   * Setting up the runner, branch protection and linting the code.
