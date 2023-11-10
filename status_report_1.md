@@ -16,6 +16,7 @@
   * Setup GitHub Workflow to run unit test cases when:
         - Commit is made to the "dev" branch
         - PR is opened/reopened
+  * [Link to the commit](https://github.ncsu.edu/dmehta4/devops-proposal/commit/7ea32c9f160ef1aef80fdcd3d7159b304fe2d119)
 
 ## Next Steps
 
