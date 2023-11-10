@@ -13,11 +13,15 @@
   * [Link to the commit](https://github.ncsu.edu/dmehta4/devops-proposal/commit/e0546241a855a5115100bb4c98c6abc3e2596a58)
 
 3. Rohan
+  * Setup GitHub Workflow to run unit test cases when:
+        - Commit is made to the "dev" branch
+        - PR is opened/reopened
 
 ## Next Steps
 
 1. Write test cases to check for cross site scripting vulnerabilities and an ansible playbook for security patches for environments - Daksh
 2. Setup PROD environment and adding addtional checks to ensure only valid images are being deployed on PROD - Ashvin
+3. Add Code Coverage representation to the repo - Rohan
 
 ## Retrospective for the sprint
 1. What Worked<br>
@@ -25,7 +29,11 @@
   * Setting up the INTEG environment
   * Building unique Docker Image of the application through GitHub Actions
   * Deploying the application on INTEG environment
+  * Discussing and dividing tasks among ourselves for smooth contribution and progress through the project.
+  * Clarifying doubts from teammates before Googling.
+  * Creating a separate test branch to verify the test cases workflow is triggered on PR
 2. What didn't work<br>
   * Setting up the runner, branch protection and linting the code.
   * Logging into DockerHub via GitHub Actions posed a considerable challenge.
 3. What we are going to do differently
+  * Meeting more often outside class, rather than on Google Meet
