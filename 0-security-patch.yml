@@ -1,0 +1,14 @@
+---
+- name: Security Patch Management
+  hosts: all 
+  become: yes 
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Upgrade packages (security updates only)
+      apt:
+        upgrade: "safe"
+      become: yes
