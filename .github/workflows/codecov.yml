@@ -15,6 +15,9 @@ jobs:
     name: Generate report 
     runs-on: self-hosted
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Use NodeJS
         uses: actions/setup-node@v3
         with:
