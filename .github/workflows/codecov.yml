@@ -23,11 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install coveralls istanbul chai mocha-lcov-reporter nyc --save-dev
 
-      - name: Run unit tests
-        run: npm run covtest
-
       - name: Run coverage
-        run: npm run coverage
+        run: npm run covtest:coverage
 
       - name: Upload coverage
         uses: actions/upload-artifact@v2
