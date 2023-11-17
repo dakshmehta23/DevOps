@@ -28,3 +28,9 @@ jobs:
 
       - name: Run coverage
         run: npm run coverage
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: ./coffee-project/coverage
