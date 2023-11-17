@@ -2,10 +2,11 @@
 
 ## Additional Project Scope
 1. Create test cases that check for security vulnerabilities.
-2. Write Ansible Playbook to ensure latest security updates are applied to environments.
-3. Create a staging environment.
-4. Add code coverage.
-5. Update pipeline so that it can support rollback. 
+2. Implement feature flags
+3. Write Ansible Playbook to ensure latest security updates are applied to environments.
+4. Create a staging environment.
+5. Add code coverage.
+6. Update pipeline so that it can support rollback.
 
 ## Accomplishments
 1. Daksh (dmehta4)
@@ -29,12 +30,16 @@
 3. Rohan
   
 ## Next Steps
-
-* Add badges to the repo to show whether workflows are passing or failing. - Daksh
+1. Daksh
+* Implement feature flag-
+We plan to implement internal feature flags. We will have the feature flag defined in another file (such as config.json) and different content will be rendered depending on whether the feature flag has been enabled or disabled.
+* Add badges to the repo to show whether workflows are passing or failing.
 
 ## Retrospective for the sprint
 1. What Worked - <br>
    Running the security test cases was fairly straightforward as it was similar to running the unit tests with a simple addition of a script in package.json.
-3. What didn't work - <br>
+2. What didn't work - <br>
   Initially it was a little difficult to write test cases that check for XSS attacks. So we had to surf the web to learn more about how XSS attacks are performed and then using the template provided we were able to write our own tests.
-4. What we are going to do differently<br>
+3. What we are going to do differently<br>
+*  We realized the importance of knowledge sharing especially while exploring new areas such as security testing. We plan to share the things we have learned during this sprint with each other so that we can continue to learn and grow.
+* We are also going to spend some time to brainstorm and figure out what would the best way to implement feature flags would be.
