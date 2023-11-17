@@ -3,5 +3,5 @@
         "lcov",
         "text-summary"
     ],
-    "report-dir": "./coffee-project/coverage"
+    "report-dir": "./coverage"
 }
