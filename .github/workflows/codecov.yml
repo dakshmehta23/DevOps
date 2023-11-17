@@ -1,0 +1,25 @@
+# This workflow generates a code coverage report
+defaults:
+  run:
+    working-directory: coffee-project
+
+name: Generating Code Coverage Report
+
+on: [push, pull_request]
+
+env:
+  NODE_VERSION: 14
+
+jobs:
+  build:
+    name: Generate report 
+    runs-on: self-hosted
+    steps:
+      - name: Install dependencies
+        run: npm install coveralls mocha-lcov-reporter nyc --save-dev
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run coverage
+        run: npm run coverage
