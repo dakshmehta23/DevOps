@@ -48,7 +48,7 @@ We plan to implement internal feature flags. We will have the feature flag defin
 
 2 Ashvin
 * Deploy Application on Kubernetes
-We aim to orchestrate the deployment of our application on Kubernetes to leverage its dynamic scaling capabilities on PROD (Production Environment)
+We will aim to orchestrate the deployment of our application on Kubernetes to leverage its dynamic scaling capabilities on PROD (Production Environment). (Not sure because of VCL specs)
 
 ## Retrospective for the sprint
 1. What Worked - <br>
