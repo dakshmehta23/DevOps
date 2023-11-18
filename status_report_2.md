@@ -7,7 +7,6 @@
 4. Create a staging environment.
 5. Add code coverage.
 6. Update pipeline so that it can support rollback.
-7. Deploy application on Kubernetes
 
 ## Accomplishments
 1. Daksh (dmehta4)
@@ -72,3 +71,4 @@ We will try to integrate a tool to check for vulnerabilities in the code - for e
 3. What we are going to do differently<br>
 *  We realized the importance of knowledge sharing especially while exploring new areas such as security testing. We plan to share the things we have learned during this sprint with each other so that we can continue to learn and grow.
 * We are also going to spend some time to brainstorm and figure out what would the best way to implement feature flags would be.
+* We plan to investigate the implementation of Kubernetes to facilitate seamless scaling and enhance high availability.
