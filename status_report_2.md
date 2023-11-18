@@ -7,6 +7,7 @@
 4. Create a staging environment.
 5. Add code coverage.
 6. Update pipeline so that it can support rollback.
+7. Deploy application on Kubernetes
 
 ## Accomplishments
 1. Daksh (dmehta4)
@@ -25,7 +26,17 @@
     This would make it easier to keep a track of the tasks currently in hand.
   * [Link to the commit](https://github.ncsu.edu/dmehta4/devops-proposal/commit/72bc04c69c55adf1a1bb0f97466fc09fad2b8b48)
 
-2. Ashvin
+2. Ashvin (agaonka2)
+  * Workflow - <br>
+   Implemented a customized image-building process to incorporate specific tagging conventions during pull requests (PR) from the development (dev) branch to the release branch. The image tag is prefixed with 'integ' in this scenario. Similarly, during PRs from the release to the main branch, the image tag is prefixed with 'prod.' This meticulous tagging ensures distinct images for different environments, enhancing traceability and environmental specificity. <br>
+   Engineered the image generation process to facilitate seamless rollbacks. By preserving previous working deployed images, this approach ensures the ability to revert the application to a state identical to any prior successfully deployed image.<br>
+  * Ansible - <br>
+   Developed Ansible scripts to automate the setup and configuration of the production (PROD) environment. These scripts include conditional statements to verify that only production images are deployed on the PROD environment, ensuring the integrity and reliability of the production infrastructure.<br>
+  * Kubernetes Deployment (Minikube Local Environment) - <br>
+   Orchestrated the deployment of the application using Kubernetes, specifically leveraging Minikube for local development and testing purposes.<br>
+  * [Link to the commit](https://github.ncsu.edu/dmehta4/devops-proposal/commit/899f16e2c71479b9f05bded91a33b4ea95a18548)  
+   
+
   
 3. Rohan
   
@@ -35,11 +46,18 @@
 We plan to implement internal feature flags. We will have the feature flag defined in another file (such as config.json) and different content will be rendered depending on whether the feature flag has been enabled or disabled.
 * Add badges to the repo to show whether workflows are passing or failing.
 
+2 Ashvin
+* Deploy Application on Kubernetes
+We aim to orchestrate the deployment of our application on Kubernetes to leverage its dynamic scaling capabilities on PROD (Production Environment)
+
 ## Retrospective for the sprint
 1. What Worked - <br>
-   Running the security test cases was fairly straightforward as it was similar to running the unit tests with a simple addition of a script in package.json.
+  * Running the security test cases was fairly straightforward as it was similar to running the unit tests with a simple addition of a script in package.json.
+  * Establishing the production (PROD) environment and implementing checks required a significant amount of effort but was ultimately successful.
+   
 2. What didn't work - <br>
-  Initially it was a little difficult to write test cases that check for XSS attacks. So we had to surf the web to learn more about how XSS attacks are performed and then using the template provided we were able to write our own tests.
+  * Initially it was a little difficult to write test cases that check for XSS attacks. So we had to surf the web to learn more about how XSS attacks are performed and then using the template provided we were able to write our own tests.
+  * Deploying the application on Minikube locally in the development environment proved to be quite challenging due to our limited knowledge about Kubernetes.
 3. What we are going to do differently<br>
 *  We realized the importance of knowledge sharing especially while exploring new areas such as security testing. We plan to share the things we have learned during this sprint with each other so that we can continue to learn and grow.
 * We are also going to spend some time to brainstorm and figure out what would the best way to implement feature flags would be.
