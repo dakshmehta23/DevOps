@@ -3,7 +3,7 @@ defaults:
   run:
     working-directory: coffee-project
 
-name: Generating Code Coverage Report
+name: Code Coverage PASS/FAIL
 
 on: [push, pull_request]
 
@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    name: Generate report 
+    name: Generate Report & Check Eligibility
     runs-on: self-hosted
     steps:
       - name: Checkout Repository
