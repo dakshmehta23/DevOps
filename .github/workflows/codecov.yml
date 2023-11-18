@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION}}
 
       - name: Install dependencies
-        run: npm install coveralls istanbul chai mocha-lcov-reporter nyc --save-dev
+        run: npm install coveralls codecov istanbul chai mocha-lcov-reporter nyc --save-dev
 
       - name: Run tests
         run: npm run test
