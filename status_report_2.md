@@ -60,3 +60,4 @@ We will aim to orchestrate the deployment of our application on Kubernetes to le
 3. What we are going to do differently<br>
 *  We realized the importance of knowledge sharing especially while exploring new areas such as security testing. We plan to share the things we have learned during this sprint with each other so that we can continue to learn and grow.
 * We are also going to spend some time to brainstorm and figure out what would the best way to implement feature flags would be.
+* We plan to investigate the implementation of Kubernetes to facilitate seamless scaling and enhance high availability.
