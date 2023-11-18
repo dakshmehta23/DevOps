@@ -7,7 +7,6 @@
 4. Create a staging environment.
 5. Add code coverage.
 6. Update pipeline so that it can support rollback.
-7. Deploy application on Kubernetes
 
 ## Accomplishments
 1. Daksh (dmehta4)
