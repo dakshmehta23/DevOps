@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION}}
 
       - name: Install dependencies
-        run: npm install coveralls codecov istanbul chai mocha-lcov-reporter nyc --save-dev
+        run: npm install chai mocha-lcov-reporter nyc --save-dev
 
       - name: Run tests
         run: npm run covtest
@@ -37,8 +37,8 @@ jobs:
           COVERAGE_PERCENTAGE=$(npx nyc report --reporter=text-summary | grep -oP 'Statements\s+:\s+\K[0-9]+(?=%)')
 
           if [ "$COVERAGE_PERCENTAGE" -gt 90 ]; then
-            echo "Code Coverage is less than 90%. Current coverage is ($COVERAGE_PERCENTAGE)"
+            echo "[FAIL] Code Coverage is less than 90%. Current coverage is ($COVERAGE_PERCENTAGE)%"
             exit 1
           else
-            echo "Code Coverage is gt 90%"
+            echo "[PASS] Code Coverage is ($COVERAGE_PERCENTAGE)%. It passes the Code Coverage Criteria of being over 90%"
           fi
