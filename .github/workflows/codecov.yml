@@ -27,7 +27,7 @@ jobs:
         run: npm install coveralls codecov istanbul chai mocha-lcov-reporter nyc --save-dev
 
       - name: Run tests
-        run: npm run test
+        run: npm run covtest1
 
-      - name: Upload coverage
-        uses: codecov/codecov-action@v3
+      - name: Run coverage
+        run: npm run coverage1
