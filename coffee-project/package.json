@@ -9,7 +9,7 @@
     "lint:js": "eslint *.js",
     "lint": "npm run lint:js",
     "test2": "mocha --exit ./test/*.securitytest.js",
-    "covtest": "mocha ./test/*.test.js",
+    "covtest": "nyc mocha --exit ./test/*.test.js",
     "coverage": "npx nyc report --reporter=lcov --reporter=text-summary -t coverage --report-dir=coverage/summary"
   },
   "dependencies": {
