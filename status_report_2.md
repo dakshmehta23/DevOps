@@ -39,6 +39,11 @@
 
   
 3. Rohan
+  * Code Cov Reports - <br>
+    Generated Code Coverage report by running the test cases with mocha and nyc. 
+  * Code Cov Workflow
+    Created a Workflow which runs the test cases and generates Code Coverage reports. Now we skim the output with the percentage number. If the percentage is less than 90%, the workflow fails, else it passes successfully.
+
   
 ## Next Steps
 1. Daksh
@@ -50,14 +55,20 @@ We plan to implement internal feature flags. We will have the feature flag defin
 * Deploy Application on Kubernetes
 We will aim to orchestrate the deployment of our application on Kubernetes to leverage its dynamic scaling capabilities on PROD (Production Environment). (Not sure because of VCL specs)
 
+3. Rohan
+* Check Vulnerabilities in the code
+We will try to integrate a tool to check for vulnerabilities in the code - for eg SonarQube.
+
 ## Retrospective for the sprint
 1. What Worked - <br>
   * Running the security test cases was fairly straightforward as it was similar to running the unit tests with a simple addition of a script in package.json.
   * Establishing the production (PROD) environment and implementing checks required a significant amount of effort but was ultimately successful.
+  * Piazza - looking for discussions on issues I faced and getting suggestions from other users helped a lot.
    
 2. What didn't work - <br>
   * Initially it was a little difficult to write test cases that check for XSS attacks. So we had to surf the web to learn more about how XSS attacks are performed and then using the template provided we were able to write our own tests.
   * Deploying the application on Minikube locally in the development environment proved to be quite challenging due to our limited knowledge about Kubernetes.
+  * Integrating Codecov in the repo. Trying to sign in with GitHub Enterprise on their website was an unending loop. Coveralls also had the same issue. Reports were being generated locally with nyc and mocha, and even though the workflow was passing, the output files (HTML) were not being updated in the repository.
 3. What we are going to do differently<br>
 *  We realized the importance of knowledge sharing especially while exploring new areas such as security testing. We plan to share the things we have learned during this sprint with each other so that we can continue to learn and grow.
 * We are also going to spend some time to brainstorm and figure out what would the best way to implement feature flags would be.
