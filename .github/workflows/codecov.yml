@@ -27,4 +27,4 @@ jobs:
         run: npm install coveralls istanbul chai mocha-lcov-reporter nyc --save-dev
 
       - name: Run coverage
-        run: npm run coverage
+        run: istanbul cover ./test/app.test.js
