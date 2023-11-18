@@ -10,9 +10,7 @@
     "lint": "npm run lint:js",
     "test2": "mocha --exit ./test/*.securitytest.js",
     "covtest": "nyc mocha --exit ./test/*.test.js",
-    "coverage": "nyc report --reporter=lcov --reporter=text-summary --report-dir=coverage/summary",
-    "covtest1": "nyc --reporter=lcov mocha --exit ./test/*.test.js",
-    "coverage1": "codecov"
+    "coverage": "nyc report --reporter=lcov --reporter=text-summary --report-dir=coverage/summary"
   },
   "dependencies": {
     "axios": "^1.5.1",
