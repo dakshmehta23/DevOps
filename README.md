@@ -72,6 +72,6 @@ The technologies we will employ include:
 
 
 # Authors
-1. Daksh Mehta (dmehta4)
+1. Daksh Mehta. (dmehta4)
 2. Ashvin Shivram Gaonkar (agaonka2)
 3. Rohan Shiveshwarkar (rsshives)
