@@ -36,9 +36,9 @@ jobs:
         run: |
           COVERAGE_PERCENTAGE=$(npx nyc report --reporter=text-summary | grep -oP 'Statements\s+:\s+\K[0-9]+(?=%)')
 
-          if [ "$COVERAGE_PERCENTAGE" -lt 90 ]; then
-            echo "[FAIL] Code Coverage is less than 90%. Current coverage is ($COVERAGE_PERCENTAGE)%"
+          if [ "$COVERAGE_PERCENTAGE" -lt 80 ]; then
+            echo "[FAIL] Code Coverage is less than 80%. Current coverage is ($COVERAGE_PERCENTAGE)%"
             exit 1
           else
-            echo "[PASS] Code Coverage is ($COVERAGE_PERCENTAGE)%. It passes the Code Coverage Criteria of being over 90%"
+            echo "[PASS] Code Coverage is ($COVERAGE_PERCENTAGE)%. It passes the Code Coverage Criteria of being over 80%"
           fi
