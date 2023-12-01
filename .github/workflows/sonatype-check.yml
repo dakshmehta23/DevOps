@@ -1,4 +1,8 @@
 # Vulnerability Checking using Audit
+defaults:
+  run:
+    working-directory: coffee-project
+
 name: Vulnerability Check
 
 on: [push]
