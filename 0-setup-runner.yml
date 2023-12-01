@@ -1,8 +1,31 @@
 ---
-- name: Install and start Docker on self-hosted GitHub Runner
+- name: Install Ansible and start Docker on self-hosted GitHub Runner
   hosts: github_runner
   become: yes
+  gather_facts: true
   tasks:
+    - name: Update libraries
+      command: "sudo apt update"
+      become_user: root
+
+    - name: Install pip3
+      apt:
+        name: python3-pip
+        state: present
+      become: yes
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+      become: yes
+
+    - name: Install Ansible
+      pip:
+        name: ansible
+        state: present
+      become: yes
+
     - name: Install Docker
       apt:
         name: docker.io
