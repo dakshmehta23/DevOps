@@ -1,0 +1,25 @@
+# Vulnerability Checking using Audit
+name: Vulnerability Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Use NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION}}
+    
+    - name: Install CI
+      run: npm install ci
+
+    - name: Run unit tests
+      run: npm test
+
+    - name: run auditjs
+      run: |
+        npx auditjs@beta ossi
