@@ -1,0 +1,27 @@
+name: Setup Monitoring Server
+
+on:
+  push:
+    branches:
+      - SETUP_MONITORING_SERVER
+
+jobs:
+  Setup_Monitoring_Tools:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Copy deploy.yml and hosts.yml to Desktop
+      run: |
+        mkdir -p $HOME/deploy
+        cp deploy.yml $HOME/deploy
+        cp hosts.yml $HOME/deploy
+        cp prometheus.yml.j2 $HOME/deploy
+
+    - name: Display copied files
+      run: ls $HOME/deploy
+
+    - name: Run Ansible playbook
+      run: ansible-playbook -i $HOME/deploy/hosts.yml $HOME/deploy/deploy.yml

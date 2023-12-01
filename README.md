@@ -1,11 +1,7 @@
-# Final Submission
+# Setup Monitoring Server
+This will automatically setup Prometheus and Grafana on remote Ubuntu Machine to monitor health of the application.
 
-## Workflows
-![Linting](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/lint.yml/badge.svg)
-![Unit Tests](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/testcases.yml/badge.svg)
-![Security Tests](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/security-tests.yml/badge.svg)
+## How to Setup
+Change the IP address of monitoring server in ```hosts.yml```. Add the INTEG or PROD IP in ```prometheus.yml.j2``` under docker_metrics job target. Leave the PORT to be 9323.
 
-## Authors
-1. Daksh Mehta (dmehta4)
-2. Ashvin Shivram Gaonkar (agaonka2)
-3. Rohan Shiveshwarkar (rsshives)
+Commit and push the changes. GitHub Action will automatically trigger
