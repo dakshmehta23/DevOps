@@ -32,19 +32,21 @@ jobs:
     - name: Build Image
       id: build
       run: |
-        if [[ "${{ github.event.pull_request.base.ref }}" == "main" ]]; then
-            sudo chmod 666 /var/run/docker.sock
-            DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
-            image_tag="${DOCKER_USER}/prod-$(echo ${{steps.datetime.outputs.date}})"
-            sudo docker build -t "$image_tag" -f ./coffee-project/Dockerfile .
-            echo "::set-output name=image_tag::$image_tag"
+        branch_name="${{ github.event.pull_request.base.ref }}"
+        if [[ $branch_name == release-* ]]; then
+          sudo chmod 666 /var/run/docker.sock
+          DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
+          image_tag="${DOCKER_USER}/integ-$(echo ${{steps.datetime.outputs.date}})"
+          sudo docker build -t "$image_tag" -f ./coffee-project/Dockerfile .
+          echo "::set-output name=image_tag::$image_tag"
         fi
-        if [[ "${{ github.event.pull_request.base.ref }}" == "release-*" ]]; then
-            sudo chmod 666 /var/run/docker.sock
-            DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
-            image_tag="${DOCKER_USER}/integ-$(echo ${{steps.datetime.outputs.date}})"
-            sudo docker build -t "$image_tag" -f ./coffee-project/Dockerfile .
-            echo "::set-output name=image_tag::$image_tag"
+        if [[ $branch_name == main ]]; then
+          echo "Inside first if"
+          sudo chmod 666 /var/run/docker.sock
+          DOCKER_USER="${{secrets.DOCKER_USERNAME}}"
+          image_tag="${DOCKER_USER}/prod-$(echo ${{steps.datetime.outputs.date}})"
+          sudo docker build -t "$image_tag" -f ./coffee-project/Dockerfile .
+          echo "::set-output name=image_tag::$image_tag"
         fi
 
     - name: Login to Docker Hub
