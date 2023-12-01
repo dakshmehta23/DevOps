@@ -1,7 +1,8 @@
-# Setup Monitoring Server
-This will automatically setup Prometheus and Grafana on remote Ubuntu Machine to monitor health of the application.
+# INTEG ENVIRONMENT
 
-## How to Setup
-Change the IP address of monitoring server in ```hosts.yml```. Add the INTEG or PROD IP in ```prometheus.yml.j2``` under docker_metrics job target. Leave the PORT to be 9323.
+This is the file to deploy any image to integ environment. We are using seperate deployment file to achieve rollback. In case we want to deploy any prior version of the image this files comes handy.
 
-Commit and push the changes. GitHub Action will automatically trigger
+## How to deploy
+Change the IP address of integ in ```hosts.yml``` and change the ```docker_image_name``` in ```deploy.yml```.
+
+Commit and push the changes. The image will automatically deploy.

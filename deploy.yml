@@ -1,78 +1,80 @@
 ---
-- name: Install and configure Grafana and Prometheus
-  hosts: monitoring_server
+- name: Install Node.js
+  hosts: integ
   become: yes
+  vars:
+    docker_image_name: "agaonka2/integ-20231130233231"
 
   tasks:
-    - name: Install required packages
+    - name: Update package cache
       apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - adduser
-        - libfontconfig1
-        - musl
-
-    - name: Download Grafana package
-      get_url:
-        url: "https://dl.grafana.com/oss/release/grafana_10.0.0_amd64.deb"
-        dest: "/tmp/grafana_10.0.0_amd64.deb"
-
-    - name: Install Grafana package
-      apt:
-        deb: "/tmp/grafana_10.0.0_amd64.deb"
-      args:
         update_cache: yes
+      when: ansible_distribution == 'Ubuntu'
 
-    - name: Reload systemd
-      systemd:
-        daemon_reload: yes
-
-    - name: Enable Grafana service
-      systemd:
-        name: grafana-server
-        enabled: yes
-
-    - name: Start Grafana service
-      systemd:
-        name: grafana-server
-        state: started
-
-    - name: Expose port 3000 with iptables
-      shell: 
-        "sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT"  
-
-    - name: Stop unattended upgrades
-      shell: 
-        "sudo systemctl stop unattended-upgrades" 
-
-    - name: Install required packages
+    - name: Install Docker
       apt:
-        name: "{{ item }}"
+        name: docker.io
         state: present
-        update_cache: no
-      with_items:
-        - prometheus
+      when: ansible_os_family == 'Debian'
 
-    - name: Copy custom Prometheus configuration
-      template:
-        src: prometheus.yml.j2
-        dest: /etc/prometheus/prometheus.yml
-      notify:
-        - Restart Prometheus
-
-    - name: Start Prometheus service
+    - name: Start and enable Docker service
       service:
-        name: prometheus
+        name: docker
         state: started
         enabled: yes
+      when: ansible_os_family == 'Debian'
 
-    - name: Expose port 9090 with iptables
+    - name: Create directory if it doesn't exist
+      file:
+        path: /etc/docker
+        state: directory
+        mode: '0755'
+    
+    - name: Create Docker Daemon configuration file
+      copy:
+        content: |
+          {
+            "metrics-addr": "0.0.0.0:9323",
+            "experimental": true
+          }
+        dest: /etc/docker/daemon.json
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Restart docker
+      shell:
+        "sudo systemctl restart docker"
+
+    - name: Expose port 9323 with iptables
       shell: 
-        "sudo iptables -I INPUT -p tcp -m tcp --dport 9090 -j ACCEPT"    
+        "sudo iptables -I INPUT -p tcp -m tcp --dport 9323 -j ACCEPT"
 
-  handlers:
-    - name: Restart Prometheus
-      service:
-        name: prometheus
-        state: restarted
+    - name: Install Python3 pip
+      apt:
+        name: python3-pip
+        state: present
+      become: yes
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install Docker Python library
+      pip:
+        name: docker
+      become: yes
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Pull Docker image
+      docker_image:
+        name: "{{ docker_image_name }}"
+        source: pull
+        state: present
+      register: docker_image_result
+
+    - name: Run Docker container
+      docker_container:
+        name: my_container
+        image: "{{ docker_image_name }}"
+        state: started
+        ports:
+          - "3000:3000"
+      register: docker_container_result

@@ -1,12 +1,12 @@
-name: Setup Monitoring Server
+name: Deploy on INTEG
 
 on:
   push:
     branches:
-      - SETUP_MONITORING_SERVER
+      - INTEG
 
 jobs:
-  Setup_Monitoring_Tools:
+  Deploy:
     runs-on: self-hosted
 
     steps:
@@ -18,7 +18,6 @@ jobs:
         mkdir -p $HOME/deploy
         cp deploy.yml $HOME/deploy
         cp hosts.yml $HOME/deploy
-        cp prometheus.yml.j2 $HOME/deploy
 
     - name: Display copied files
       run: ls $HOME/deploy
