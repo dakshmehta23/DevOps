@@ -4,6 +4,8 @@
 ![Linting](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/lint.yml/badge.svg)
 ![Unit Tests](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/testcases.yml/badge.svg)
 ![Security Tests](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/security-tests.yml/badge.svg)
+![Code Coverage](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/codecov.yml/badge.svg)
+![Vulnerability Check](https://github.ncsu.edu/dmehta4/devops-proposal/actions/workflows/sonatype-check.yml/badge.svg)
 
 ## Authors
 1. Daksh Mehta (dmehta4)
