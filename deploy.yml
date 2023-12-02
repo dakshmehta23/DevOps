@@ -1,11 +1,17 @@
 ---
 - name: Install Node.js
-  hosts: integ
+  hosts: prod
   become: yes
   vars:
-    docker_image_name: "agaonka2/integ-20231130233231"
+    expected_image_prefix: "agaonka2/prod"
+    docker_image_name: "agaonka2/integ-20231127235210"
 
   tasks:
+    - name: Check if the image being deployed is for PROD
+      fail:
+        msg: "The specified image is not for PROD"
+      when: not docker_image_name.startswith(expected_image_prefix)
+      
     - name: Update package cache
       apt:
         update_cache: yes

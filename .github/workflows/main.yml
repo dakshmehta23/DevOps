@@ -1,9 +1,9 @@
-name: Deploy on INTEG
+name: Deploy on PROD
 
 on:
   push:
     branches:
-      - INTEG
+      - PROD
 
 jobs:
   Deploy:
