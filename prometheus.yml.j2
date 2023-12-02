@@ -37,7 +37,13 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'docker_metrics'
+  - job_name: 'docker_metrics_integ'
+    # If prometheus-node-exporter is installed, grab stats about the local
+    # machine by default.
+    static_configs:
+      - targets: ['152.7.178.250:9323']
+
+  - job_name: 'docker_metrics_prod'
     # If prometheus-node-exporter is installed, grab stats about the local
     # machine by default.
     static_configs:
