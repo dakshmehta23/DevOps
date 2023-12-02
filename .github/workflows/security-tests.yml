@@ -19,6 +19,9 @@ jobs:
     name: Run Security Test Cases
     runs-on: self-hosted
     steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+      
       - name: Use NodeJS
         uses: actions/setup-node@v3
         with:
