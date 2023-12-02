@@ -11,6 +11,11 @@
         update_cache: yes
       when: ansible_distribution == 'Ubuntu'
 
+    - name: Upgrade packages (security updates only)
+      apt:
+        upgrade: "safe"
+      become: yes
+
     - name: Install Docker
       apt:
         name: docker.io
