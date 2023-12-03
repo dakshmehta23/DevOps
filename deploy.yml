@@ -4,7 +4,7 @@
   become: yes
   vars:
     expected_image_prefix: "agaonka2/prod"
-    docker_image_name: "agaonka2/prod-20231202203213"
+    docker_image_name: "agaonka2/integ-20231202210124"
 
   tasks:
     - name: Check if the image being deployed is for PROD
