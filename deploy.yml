@@ -4,7 +4,7 @@
   become: yes
 
   tasks:
-    - name: Install required packages
+    - name: Install required package
       apt:
         name: "{{ item }}"
         state: present
