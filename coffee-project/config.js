@@ -1,3 +1,3 @@
 module.exports = {
-    shopOpen: false,
+    shopOpen: true,
 };
