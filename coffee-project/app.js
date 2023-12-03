@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static('public')); 
+app.use(express.static('public'));
 module.exports = app
 
 // Endpoint to fetch available coffees
@@ -40,6 +40,11 @@ app.post('/order', (req, res) => {
 // Endpoint to fetch all orders
 app.get('/orders', (req, res) => {
   res.json(orders);
+});
+
+app.get('/config', (req, res) => {
+  const config = require('./config');
+  res.json(config);
 });
 
 app.listen(PORT, () => {

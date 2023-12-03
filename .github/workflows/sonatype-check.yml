@@ -1,0 +1,34 @@
+# Vulnerability Checking using Audit
+defaults:
+  run:
+    working-directory: coffee-project
+
+name: Vulnerability Check
+
+on: [push]
+
+env:
+  NODE_VERSION: 14
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+        
+      - name: Use NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION}}
+      
+      - name: Install CI
+        run: npm install ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: run auditjs
+        run: |
+          npx auditjs@beta ossi

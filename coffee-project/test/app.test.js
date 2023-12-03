@@ -4,6 +4,7 @@
 const request = require('supertest');
 const chai = require('chai');
 const app = require('../app'); // path to your app.js file
+const config = require('../config')
 
 const expect = chai.expect;
 
@@ -51,6 +52,19 @@ describe('Coffee Delivery Service API', () => {
                 .end((err, res) => {
                     expect(res.statusCode).to.equal(200);
                     expect(res.body).to.be.an('array');
+                    done();
+                });
+        });
+    });
+
+    describe('GET /config', () => {
+        it('should return the feature flag', (done) => {
+            request(app)
+                .get('/config')
+                .end((err, res) => {
+                    expect(res.statusCode).to.equal(200);
+                    expect(res.body).to.be.an('object');
+                    expect(res.body).to.deep.equal(config);
                     done();
                 });
         });
