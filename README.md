@@ -71,7 +71,17 @@ We can when the container are up from Grafana Dashboard using the metrics ```eng
 ## Feature Flag
 To enable certain feature, in our case if the Coffee Shop is opened or closed all you have to do is change the value of ```shopOpen``` to ```False``` in ```config.js``` inside coffee-project directory on ```dev``` branch
 
+# Where to Find
+[Workflow for Linter](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/.github/workflows/lint.yml)
+[Workflow for Running Unit Test Cases](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/.github/workflows/testcases.yml)
+[Workflow for Publishing Image to DockerHub](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/.github/workflows/build-docker-image-dev.yml)
+[Workflow for Running Security Test Cases to check for XSS attacks vulnerabilities](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/.github/workflows/security-tests.yml)
+[Workflow for Code Coverage](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/.github/workflows/codecov.yml)
+[Workflow for Checking Packages Vulnerabilities]()
 
+[Security Test Cases checking for XSS attacks vulnerabilities](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/coffee-project/test/app.securitytest.js)
+[Directory for Configuring VM & Deploying Image](https://github.ncsu.edu/dmehta4/devops-proposal/tree/main/deploy)
+[Feature Flag for Shop Status(Open/Closed)](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/coffee-project/config.js)
 ## Authors
 1. Daksh Mehta (dmehta4)
 2. Ashvin Shivram Gaonkar (agaonka2)

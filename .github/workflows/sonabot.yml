@@ -5,7 +5,7 @@ defaults:
 
 name: Vulnerability Check
 
-on: [push]
+on: [push, pull_request]
 
 env:
   NODE_VERSION: 14
