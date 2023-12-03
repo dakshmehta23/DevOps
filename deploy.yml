@@ -3,7 +3,7 @@
   hosts: integ
   become: yes
   vars:
-    docker_image_name: "agaonka2/integ-20231203183247"
+    docker_image_name: "agaonka2/integ-20231203185036"
 
   tasks:
     - name: Update package cache
