@@ -47,8 +47,8 @@ Checkout SETUP_MONITORING_TOOLS and change the IP address of monitoring server i
 
 Commit and push the changes. GitHub Action will automatically trigger and will setup Prometheus and Grafana. Furhter we have to manually setup Grafana and Dashboard through UI
 
-Prometheus UI ```monitoring_server_ip:9090```
-Grafana UI ```monitoring_server_ip:3000```
+* Prometheus UI: ```monitoring_server_ip:9090```
+* Grafana UI: ```monitoring_server_ip:3000```
 
 ## Image Building Process
 During continous development some commits will be made on ```dev``` branch. Push those change. Once pushed, GitHub Action will automatically trigger and execute various task such as Linting, Vulnerability Check, Unit Test, Security Test. Once all the checks are passed we create Pull Request from ```dev``` branch to ```release-X.X.X``` branch. Doing so will again trigger Github Action that will execute various task before merging. To merge the changes one of the reviewer needs to approve the changes, and once changes are merged, the image building process will trigger which will build image with the name ```agaonka2/integ-<timestamp>``` and pushed to DockerHub under username ```aganoka2```.
@@ -63,13 +63,13 @@ Once we are done with manual checking and we feel like deploying on PROD, we cre
 
 Checkout to ```PROD``` branch and update the ```prod``` IP in ```hosts.yml``` and ```docker_image_name``` in ```deploy.yml```.
 
-Commit and push the changes. GitHub Action will automatically trigger and deploy the application. Check the application on ```prod_ip:3000```
+Commit and push the changes. GitHub Action will automatically trigger and deploy the application. Check the application on ```prod_ip:3000```. Additional check is enforced in PROD environment, i.e. only image with prod prefix can be deployed on PROD. This is done to avoid any mistakenly deployment of integ application on PROD environment.
 
 ## Monitoring
 We can monitor when the container was up and running from Grafana Dashboard using the metrics ```engine_daemon_container_states_containers{state="running"}```
 
 ## Feature Flag
-To enable certain feature, in our case if the Coffee Shop is opened or closed all you have to do is change the value of ```shopOpen``` to ```False``` in ```config.js``` inside coffee-project directory on ```dev``` branch
+To enable certain feature, in our case if the Coffee Shop is opened or closed all you have to do is change the value of ```shopOpen``` to ```False``` in ```config.js``` inside coffee-project directory on ```dev``` branch and repeat the image building and deployment process
 
 # Where to Find
 ## Workflows
@@ -82,8 +82,7 @@ To enable certain feature, in our case if the Coffee Shop is opened or closed al
 ## Files
 * [Security Test Cases checking for XSS attacks vulnerabilities](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/coffee-project/test/app.securitytest.js)
 * [Feature Flag for Shop Status(Open/Closed)](https://github.ncsu.edu/dmehta4/devops-proposal/blob/main/coffee-project/config.js)
-* [Directory for Configuring VM & Deploying Image](https://github.ncsu.edu/dmehta4/devops-proposal/tree/main/deploy)
-## Environments
+## Deployment and Setup files
 * [INTEG Environment](https://github.ncsu.edu/dmehta4/devops-proposal/tree/INTEG)
 * [PROD Environment](https://github.ncsu.edu/dmehta4/devops-proposal/tree/PROD)
 * [Monitoring Server](https://github.ncsu.edu/dmehta4/devops-proposal/tree/SETUP_MONITORING_SERVER)
