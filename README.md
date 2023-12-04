@@ -66,7 +66,7 @@ Checkout to ```PROD``` branch and update the ```prod``` IP in ```hosts.yml``` an
 Commit and push the changes. GitHub Action will automatically trigger and deploy the application. Check the application on ```prod_ip:3000```
 
 ## Monitoring
-We can when the container are up from Grafana Dashboard using the metrics ```engine_daemon_container_states_containers{state="running"}```
+We can monitor when the container was up and running from Grafana Dashboard using the metrics ```engine_daemon_container_states_containers{state="running"}```
 
 ## Feature Flag
 To enable certain feature, in our case if the Coffee Shop is opened or closed all you have to do is change the value of ```shopOpen``` to ```False``` in ```config.js``` inside coffee-project directory on ```dev``` branch
